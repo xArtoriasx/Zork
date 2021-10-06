@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.IO;
+using Newtonsoft.Json;
 
 
 namespace Zork
@@ -26,7 +27,7 @@ namespace Zork
         static void Main(string[] args)
 
         {
-            string roomsFilename = "Rooms.txt";
+            string roomsFilename = "Rooms.json";
             InitializeRoomDescriptions(roomsFilename);
             Console.WriteLine("Welcome to Zork!");
             Room previousRoom = null;
@@ -106,7 +107,7 @@ namespace Zork
             return Enum.TryParse(commandString, ignoreCase: true, out Commands result) ? result : Commands.UNKNOWN;
         }
 
-        private static readonly Room[,] Rooms =
+        private static Room[,] Rooms =
         {
             { new Room("Rocky Trail"), new Room("South of House"), new Room("Canyon View") },
             { new Room("Forest"), new Room("West of House"), new Room("Behind House") },
@@ -117,29 +118,7 @@ namespace Zork
         private static int LocationColumn = 1;
         private static void InitializeRoomDescriptions(string roomsFilename)
         {
-            const string fieldDelimiter = "##";
-            const int expectedFieldCount = 2;
-            var roomQuery = from line in File.ReadLines(roomsFilename)
-                            let fields = line.Split(fieldDelimiter)
-                            where fields.Length == expectedFieldCount
-                            select (Name: fields[(int)Fields.Name], Description: fields[(int)Fields.Description]);
-
-            foreach (var (Name, Description) in roomQuery)
-            {
-                RoomMap[Name].Description = Description;
-            }
-
-
-        }
-
-        private static readonly Dictionary<string, Room> RoomMap;
-        static Program()
-        {
-            RoomMap = new Dictionary<string, Room>();
-            foreach (Room room in Rooms)
-            {
-                RoomMap[room.Name] = room;
-            }
+            Rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
         }
     }
 
