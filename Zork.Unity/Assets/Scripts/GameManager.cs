@@ -24,11 +24,14 @@ public class GameManager : MonoBehaviour
     {
         TextAsset gametextAsset = Resources.Load<TextAsset>("Zork");
         _game = JsonConvert.DeserializeObject<Game>(gametextAsset.text);
-        _game.Player.LocationChanged += (sender, Location) => CurrentLocationText.text = Location.ToString();
+        _game.Player.LocationChanged += (sender, Location) => CurrentLocationText.text = $"Location: {Location.ToString()}";
         _game.Start(InputService, OutputService);
-        _game.Player.MovesChanged += (sender, moves) => MovesText.text = moves.ToString();
-        _game.Player.ScoreChanged += (sender, score) => ScoreText.text = score.ToString();
+        _game.Player.MovesChanged += (sender, moves) => MovesText.text = $"Moves: {moves.ToString()}";
+        _game.Player.ScoreChanged += (sender, score) => ScoreText.text = $"Score: {score.ToString()}";
+        
     }
+
+
 
     private Game _game;
 }

@@ -97,6 +97,16 @@ namespace Zork
 
         private static void Quit(Game game) => game.IsRunning = false;
 
+        private static void Reward(Game game) => game.Player.Score += 1;
+
+        private static void ScoreCheck(Game game)
+        {
+            if (game.Player.Moves == 1)
+            {
+                game.Output.WriteLine($"Your score is:{game.Player.Score} and you have made {game.Player.Moves} move(s)");
+            }
+        }
+
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context) => Player = new Player(World, StartingLocation);
     }
