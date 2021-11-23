@@ -6,7 +6,7 @@ using Zork.Common;
 public class UnityInputService : MonoBehaviour, IInputService
 {
     [SerializeField]
-    private TMP_InputField InputField;
+    public TMP_InputField InputField;
 
     public event EventHandler<string> InputRecieved;
 
@@ -21,6 +21,8 @@ public class UnityInputService : MonoBehaviour, IInputService
             }
 
             InputField.text = string.Empty;
+            InputField.Select();
+            InputField.ActivateInputField();
         }
     }
 }

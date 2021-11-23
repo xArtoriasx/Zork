@@ -8,9 +8,9 @@ namespace Zork.Common
     {
 
         public event EventHandler<Room> LocationChanged;
-        
+
         public event EventHandler<int> ScoreChanged;
-        
+
         public event EventHandler<int> MovesChanged;
         public World World { get; }
 

@@ -11,5 +11,5 @@
         UNKNOWN,
         REWARD,
         SCORE
-    } 
+    }
 }

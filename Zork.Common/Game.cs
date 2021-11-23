@@ -46,6 +46,8 @@ namespace Zork
                 { "SOUTH", new Command("SOUTH", new string[] { "SOUTH", "S" }, game => Move(game, Directions.SOUTH)) },
                 { "EAST", new Command("EAST", new string[] { "EAST", "E"}, game => Move(game, Directions.EAST)) },
                 { "WEST", new Command("WEST", new string[] { "WEST", "W" }, game => Move(game, Directions.WEST)) },
+                {"SCORE", new Command("SCORE", new string[] {"SCORE"}, Score) },
+                {"REWARD", new Command("REWARD", new string[] {"REWARD"}, Reward) }
             };
         }
 
@@ -99,7 +101,7 @@ namespace Zork
 
         private static void Reward(Game game) => game.Player.Score += 1;
 
-        private static void ScoreCheck(Game game)
+        private static void Score(Game game)
         {
             if (game.Player.Moves == 1)
             {

@@ -1,5 +1,4 @@
-﻿
-namespace Zork.Common
+﻿namespace Zork.Common
 {
     public interface IOutputService
     {

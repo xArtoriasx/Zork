@@ -20,7 +20,7 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     [SerializeField]
     private Image NewLinePrefab;
-    
+
 
     public UnityOutputService() => mEntries = new List<GameObject>();
 

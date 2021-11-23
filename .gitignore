@@ -3,9 +3,5 @@ Zork/bin/
 Zork/obj/
 */bin
 */obj
-Zork/Zork.Unity/Library/
-Zork/Zork.Unity/Logs/
-Zork/Zork.Unity/obj/
-Zork/Zork.Unity/UserSettings/
-Zork/Zork.Unity/.vsconfig/
-Zork/Zork.Unity/.vs/
+Zork/packages
+Zork/netstandard2.0
